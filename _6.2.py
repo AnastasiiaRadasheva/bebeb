@@ -1,5 +1,5 @@
 # dict.fromkeys(['a', 'd'], 100)
-
+from module1 import *
 est = ['koer', 'kass', 'maja', 'auto', 'päike']
 rus = ['собака', 'кошка', 'дом', 'машина', 'солнце']
 eng = ['dog', 'cat', 'house', 'car', 'sun']
@@ -8,6 +8,7 @@ for e, r, g in zip(est, rus, eng):
     sonastik.append({'est': e, 'rus': r, 'eng': g})
 valik = input('Vali keelekood: est, rus, eng: ')
 
+main1()
 
 
 #     create_dictionary() - создает словарь из трех языков
