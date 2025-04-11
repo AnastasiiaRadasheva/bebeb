@@ -39,7 +39,7 @@ def search_dictionary(dictionary, word):
    for entry in dictionary:
         if word in entry.values():
             return entry
-    return None
+   return None
 #3
 def add_dictionary(dictionary, est_word, rus_word, eng_word):
     new_entry = {'est': est_word, 'rus': rus_word, 'eng': eng_word}
@@ -149,3 +149,52 @@ def select_explanation():
     print("Valige menüüst soovitud tegevus.")
     print("Sõnastik sisaldab eesti, vene ja inglise keelt.")
     print("Loodame, et naudite õppimist!")
+
+def main1():
+    sonad = create_dictionary()
+    
+    while True:
+        kuva_menuu()
+        valik = input("Sisesta oma valik: ").strip()
+        
+        if valik == '1':
+            word = input("Sisesta sõna (eesti, vene või inglise keeles): ").strip().lower()
+            result = search_dictionary(sonad, word)
+            if result:
+                print(f"Tõlge: {result}")
+            else:
+                print("Sõna ei leitud!")
+        
+        elif valik == '2':
+            est_word = input("Sisesta eesti sõna: ").strip().lower()
+            rus_word = input("Sisesta vene sõna: ").strip().lower()
+            eng_word = input("Sisesta ingliskeelne sõna: ").strip().lower()
+            sonad = add_dictionary(sonad, est_word, rus_word, eng_word)
+            print("Sõna on lisatud!")
+        
+        elif valik == '3':
+            word = input("Sisesta sõna, mida soovid parandada: ").strip().lower()
+            new_word = input("Sisesta uus eesti sõna: ").strip().lower()
+            sonad = correct_dictionary(sonad, word, new_word)
+            if sonad:
+                print("Sõna on parandatud!")
+            else:
+                print("Sõna ei leitud!")
+        
+        elif valik == '4':
+            display_dictionary(sonad)
+        
+        elif valik == '5':
+            score = test_knowledge(sonad)
+            display_result(score, len(sonad))
+        
+        elif valik == '6':
+            word = input("Sisesta sõna, mida soovid kuulda: ").strip().lower()
+            text_to_speech(word)
+        
+        elif valik == '7':
+            print("Head aega!")
+            break
+        
+        else:
+            print("Vale valik, proovige uuesti!")
