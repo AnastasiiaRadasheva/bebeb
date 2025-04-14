@@ -85,9 +85,6 @@ def display_result(score, total):
         print("Good job!")
     else:
         print("Keep practicing!")
-#9
-def ask_user_speech():
-    word = input('enter')
 #10
 def text_to_speech(word):
     import pyttsx3
